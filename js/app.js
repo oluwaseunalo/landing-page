@@ -1,3 +1,62 @@
+const nav = document.getElementById('navbar__list');
+const sections = document.querySelectorAll('section');
+const navFragment = document.createDocumentFragment();
+
+const navBar = () => {
+    for (section of sections) {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.classList = 'menu__link';
+        const lineId = section.id;
+        const lineData = section.dataset.nav;
+        a.setAttribute('href', `#${lineId}`);
+        a.textContent = lineData;
+        li.appendChild(a);
+        navFragment.appendChild(li);  
+    }
+        nav.appendChild(navFragment);
+}
+
+navBar();
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const options = {
+        root: null,
+        threshold: 0
+    };
+    const observer = new IntersectionObserver (function(entries, observer){
+        for (entry of entries){
+           if (entry.isIntersecting) {
+               console.log(entry.target);
+               entry.target.classList.add('active');}
+            else {
+                entry.target.classList.remove('active')};
+           }; 
+        }, options);
+    
+        for (section of sections) {
+            observer.observe(section)};
+
+});
+
+
+
+
+
+/* const eventLi = () => {
+    for (section of sections) {
+
+    a.addEventListener('click', () => {
+        section.scrollIntoView({behavior: "smooth"});
+      });
+    }
+
+}
+
+eventLi (); */
+
+
 
 
 /**
@@ -55,9 +114,4 @@
 // Scroll to section on link click
 
 // Set sections as active
-
-
-
-
-
 

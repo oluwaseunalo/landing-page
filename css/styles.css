@@ -10,6 +10,7 @@
 
 
 /* ---- Base Rules ---- */
+
 body {
     background: rgb(136,203,171);
     background: linear-gradient(0deg, rgba(136,203,171,1) 0%, rgba(0,13,60,1) 100%);
@@ -71,7 +72,7 @@ section {
 }
 
 .navbar__menu li {
-    display: inline-block;
+    display: inline-flex;
 }
 
 .navbar__menu .menu__link {
@@ -193,20 +194,20 @@ section:nth-of-type(3n + 1) .landing__container::after {
 /* ---- Theme State Rules ---- */
 /* Section Active Styles */
 /* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
-section.your-active-class {
-    background: rgb(0, 0, 0);
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
-}
+.active {
+    background: #961313;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(128, 11, 11, 0) 100%);
+}; 
 
-section.your-active-class .landing__container::before {
+.active .landing__container::before {
     opacity: 1;
     animation: rotate 4s linear 0s infinite forwards;
 }
 
-section.your-active-class .landing__container::after {
+.active .landing__container::after {
     opacity: 1;
     animation: rotate 5s linear 0s infinite forwards reverse;
-}
+} 
 
 /* Section Active Styles Keyframe Animations */
 @keyframes rotate {
@@ -221,3 +222,4 @@ section.your-active-class .landing__container::after {
 		           rotate(-360deg);
 	}
 }
+
