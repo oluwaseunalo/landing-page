@@ -17,6 +17,7 @@ const navBar = () => {
         navFragment.appendChild(li);  
     }
         nav.appendChild(navFragment);
+        
 }
 
 navBar();
@@ -51,3 +52,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 activeSection();
 
+
+const scrollToAnchor = () => {
+
+const menuLinks = document.querySelectorAll('.menu__link');
+
+for (menuLink of menuLinks) {
+    menuLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        menuLink.scrollIntoView({behavior: "smooth"});
+    });
+}
+
+};
+
+scrollToAnchor();
