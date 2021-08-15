@@ -52,18 +52,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
 activeSection();
 
+/* Scrolling the links to the appropriate sections with
+the smooth scroll behavior */
 
 const scrollToAnchor = () => {
 
 const menuLinks = document.querySelectorAll('.menu__link');
 
-for (menuLink of menuLinks) {
+menuLinks.forEach((menuLink) => {
     menuLink.addEventListener('click', (e) => {
         e.preventDefault();
-        menuLink.scrollIntoView({behavior: "smooth"});
+        const sectionid = menuLink.getAttribute('href');
+        const section = document.querySelector(sectionid);
+        section.scrollIntoView({behavior: "smooth"});
     });
-}
+});
 
-};
+}
 
 scrollToAnchor();
