@@ -1,7 +1,9 @@
+// Defining the Global Variables
 const nav = document.getElementById('navbar__list');
 const sections = document.querySelectorAll('section');
 const navFragment = document.createDocumentFragment();
 
+// Building the navigation menu
 const navBar = () => {
     for (section of sections) {
         const li = document.createElement('li');
@@ -19,17 +21,22 @@ const navBar = () => {
 
 navBar();
 
+/* making the sections active on scroll using intersection observer
+with the focus on performance*/
+
+const activeSection = () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     const options = {
         root: null,
-        threshold: 0
+        threshold: 0.5
     };
     const observer = new IntersectionObserver (function(entries, observer){
         for (entry of entries){
            if (entry.isIntersecting) {
                console.log(entry.target);
-               entry.target.classList.add('active');}
+               entry.target.classList.add('active');
+            }
             else {
                 entry.target.classList.remove('active')};
            }; 
@@ -40,78 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+};
 
-
-
-
-/* const eventLi = () => {
-    for (section of sections) {
-
-    a.addEventListener('click', () => {
-        section.scrollIntoView({behavior: "smooth"});
-      });
-    }
-
-}
-
-eventLi (); */
-
-
-
-
-/**
- * 
- * Manipulating the DOM exercise.
- * Exercise programmatically builds navigation,
- * scrolls to anchors from navigation,
- * and highlights section in viewport upon scrolling.
- * 
- * Dependencies: None
- * 
- * JS Version: ES2015/ES6
- * 
- * JS Standard: ESlint
- * 
-*/
-
-/**
- * Define Global Variables
- * 
-*/
-
-
-/**
- * End Global Variables
- * Start Helper Functions
- * 
-*/
-
-
-
-/**
- * End Helper Functions
- * Begin Main Functions
- * 
-*/
-
-// build the nav
-
-
-// Add class 'active' to section when near top of viewport
-
-
-// Scroll to anchor ID using scrollTO event
-
-
-/**
- * End Main Functions
- * Begin Events
- * 
-*/
-
-// Build menu 
-
-// Scroll to section on link click
-
-// Set sections as active
+activeSection();
 
