@@ -102,7 +102,7 @@ section {
 .navbar__menu .menu__link:hover {
     background: #333;
     color: #fff;
-    transition: ease 0.3s all;
+    transition: ease 0.3s all; 
 }
 
 /* Header Styles */
@@ -216,6 +216,11 @@ section:nth-of-type(3n + 1) .landing__container::after {
     transition: linear 1200ms;
     color: #eee
 }; 
+
+.menu_active {
+    background: #333;
+    color: #fff;
+}
 
 .active .landing__container::before {
     opacity: 1;
