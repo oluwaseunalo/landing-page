@@ -28,34 +28,37 @@ with the focus on performance*/
 const activeSection = () => {
 
 document.addEventListener('DOMContentLoaded', () => {
-    const a_menu = document.querySelector('a').getAttribute('href');
+
     const options = {
         root: null,
         threshold: 0.5
     };
-    const observer = new IntersectionObserver (function(entries, observer){
+
+    const observer = new IntersectionObserver (callback, options);
+
+    const a_menu = document.querySelector('a').getAttribute('href').slice(1);
+        
+    const callback = (entries, observer) => {
         for (entry of entries) {
+            console.log(entry.target.id);
+            console.log(a_menu);
            if (entry.isIntersecting && entry.target.id === a_menu) {
                console.log(entry.target);
                entry.target.classList.add('active');
                document.querySelector('a').classList.remove('menu__link');
-               document.querySelector('a').classList.add('menu_active');
-
-            }
+               document.querySelector('a').classList.add('menu_active');}
             else {
-                entry.target.classList.remove('active')};
+                entry.target.classList.remove('active');
                 document.querySelector('a').classList.add('menu__link');
-               document.querySelector('a').classList.remove('menu_active');
-           }; 
-        }, options);
+               document.querySelector('a').classList.remove('menu_active');}
     
         for (section of sections) {
             
             observer.observe(section)};
 
+}
+}
 });
-
-};
 
 activeSection();
 
@@ -78,4 +81,3 @@ menuLinks.forEach((menuLink) => {
 }
 
 scrollToAnchor();
-
