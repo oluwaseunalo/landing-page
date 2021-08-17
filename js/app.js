@@ -28,37 +28,36 @@ with the focus on performance*/
 const activeSection = () => {
 
 document.addEventListener('DOMContentLoaded', () => {
-
+    
     const options = {
         root: null,
         threshold: 0.5
     };
-
-    const observer = new IntersectionObserver (callback, options);
-
-    const a_menu = document.querySelector('a').getAttribute('href').slice(1);
-        
-    const callback = (entries, observer) => {
-        for (entry of entries) {
-            console.log(entry.target.id);
-            console.log(a_menu);
+    const observer = new IntersectionObserver (function(entries, observer) {
+        const a_menu = document.querySelector('a').getAttribute('href').slice(1);
+        entries.forEach((entry) => {
+            console.log(entry.target.id)
+            console.log(a_menu)
            if (entry.isIntersecting && entry.target.id === a_menu) {
                console.log(entry.target);
                entry.target.classList.add('active');
                document.querySelector('a').classList.remove('menu__link');
-               document.querySelector('a').classList.add('menu_active');}
+               document.querySelector('a').classList.add('menu_active');
+            }
             else {
-                entry.target.classList.remove('active');
-                document.querySelector('a').classList.add('menu__link');
-               document.querySelector('a').classList.remove('menu_active');}
+                entry.target.classList.remove('active')
+                document.querySelector('a').classList.add('menu__link')
+               document.querySelector('a').classList.remove('menu_active')} 
+        })
+    }, options);
     
-        for (section of sections) {
+        sections.forEach((section) => {
             
-            observer.observe(section)};
+            observer.observe(section)});
 
-}
-}
 });
+
+};
 
 activeSection();
 
@@ -81,3 +80,4 @@ menuLinks.forEach((menuLink) => {
 }
 
 scrollToAnchor();
+
