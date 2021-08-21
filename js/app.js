@@ -23,7 +23,7 @@ const navBar = () => {
 navBar();
 
 /* making the sections active on scroll using intersection observer
-with the focus on performance*/
+and highlighting the menubar*/
 
 const activeSection = () => {
 
@@ -34,20 +34,24 @@ document.addEventListener('DOMContentLoaded', () => {
         threshold: 0.5
     };
     const observer = new IntersectionObserver (function(entries, observer) {
+        const links = Array.from(document.getElementById('narbar__list').children);
         const a_menu = document.querySelector('a').getAttribute('href').slice(1);
         entries.forEach((entry) => {
-            console.log(entry.target.id)
-            console.log(a_menu)
-           if (entry.isIntersecting && entry.target.id === a_menu) {
-               console.log(entry.target);
-               entry.target.classList.add('active');
-               document.querySelector('a').classList.remove('menu__link');
-               document.querySelector('a').classList.add('menu_active');
+            for(links of links){
+                console.log(entry.target.dataset.nav)
+                console.log(link.children[0].textContent)
+                if(entry.isIntersecting){
+                    console.log(entry.isIntersecting);
+                    entry.target.classList.add('active');
+                    if(entry.target.dataset.nav == link.chilfren[0].textContent){
+                        link.classList.add('menu_active');}
+                        else{link.classList.remove('menu_active')
+                    }
+                }
+                else {
+                    entry.target.classList.remove('menu_active')
+                }
             }
-            else {
-                entry.target.classList.remove('active')
-                document.querySelector('a').classList.add('menu__link')
-               document.querySelector('a').classList.remove('menu_active')} 
         })
     }, options);
     
@@ -60,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
 };
 
 activeSection();
-
 /* Scrolling the links to the appropriate sections with
 the smooth scroll behavior */
 
@@ -74,7 +77,9 @@ menuLinks.forEach((menuLink) => {
         const sectionid = menuLink.getAttribute('href');
         const section = document.querySelector(sectionid);
         section.scrollIntoView({behavior: "smooth"});
+      
     });
+
 });
 
 }
