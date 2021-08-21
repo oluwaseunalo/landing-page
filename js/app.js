@@ -3,6 +3,7 @@
 const nav = document.getElementById('navbar__list');
 const sections = document.querySelectorAll('section');
 const navFragment = document.createDocumentFragment();
+
 // Building the navigation menu
 const navBar = () => {
     for (section of sections) {
@@ -20,7 +21,8 @@ const navBar = () => {
         
 }
 navBar();
-/* making the sections active on scroll and highlighting the menubar using intersection observer
+/* making the sections active on scroll and 
+highlighting the menubar using intersection observer
 */
 const activeSection = () => {
     const options = {
@@ -43,7 +45,6 @@ const activeSection = () => {
                     }else{
                         link.classList.remove('menu_active')
                     }
-                
                  }
                  else {
                      entry.target.classList.remove('active')
@@ -51,14 +52,16 @@ const activeSection = () => {
                 } 
              }
             }
-        
+       
         )
     }, options);
         sections.forEach((section) => {
             observer.observe(section)});
 };
+
 /* Scrolling the links to the appropriate sections with
 the smooth scroll behavior */
+
 const scrollToAnchor = () => {
 const menuLinks = document.querySelectorAll('.menu__link');
 menuLinks.forEach((menuLink) => {
@@ -71,4 +74,5 @@ menuLinks.forEach((menuLink) => {
     });
 });
 }
+
 scrollToAnchor();
