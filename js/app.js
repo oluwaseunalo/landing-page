@@ -76,3 +76,4 @@ menuLinks.forEach((menuLink) => {
 }
 
 scrollToAnchor();
+
