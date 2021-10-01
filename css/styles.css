@@ -149,7 +149,6 @@ section:nth-of-type(even) .landing__container {
 
 /* Background Circles */
 /* Note that background circles are created with psuedo elements before and after */
-/* Circles appear to be random do to use of :nth-of-type psuedo class */
 section:nth-of-type(odd) .landing__container::before {
     content: '';
     background: rgba(255, 255, 255, 0.187);
