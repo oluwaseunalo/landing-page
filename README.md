@@ -8,5 +8,7 @@ In this project, I used JavaScript to navigate through the DOM and dynamically b
 - Scroll to Anchor
 - Responsive Web Design
 
+The Landing Page Project is hosted n GitHub Pages. You can check it [here](https://oluwaseunalo.github.io/landing-page/)
+
 
 
